@@ -12,13 +12,15 @@ let newdate = `${month} ${day}, ${year}`;
 
 const app = document.querySelector('.app');
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=2d48b1d7080d09ea964e645ccd1ec93f&units=metric')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=2d48b1d7080d09ea964e645ccd1ec93f&units=metric')
     .then(response => response.json())
     .then(data => {
         console.log(data)
-        app.insertAdjacentHTML('afterbegin', `<div class="bar"><div class="center"><a href="#" class="centerbutton"><i class="fas fa-crosshairs"></i></a></div>
-        <div class="search"><a href="#"><i class="fas fa-search"></i></a></div></div>
-        <div class="titlebar">
+
+        app.insertAdjacentHTML('afterbegin', `<div class="bar">
+        <div class="center"><a href="#"><i class="fas fa-crosshairs"></i></a></div>
+        <div class="search"><a href="#"><i class="fas fa-search"></i></a></div>
+    </div><div class="titlebar">
     <p class="date">${newdate}</p>
     <h4 class="city">${data.name}</h4>
     <p class="description">${data.weather[0].description}</p>
@@ -93,4 +95,5 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=2d48b1d7
         <p>Powered by <a href="https://github.com/irwingb1979" target="_blank">@irwing</a></p>
     </div>
 </div>`)
+
     });
